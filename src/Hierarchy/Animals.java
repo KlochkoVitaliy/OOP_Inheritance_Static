@@ -18,6 +18,7 @@ public abstract class Animals {
         } else {
             this.age = LocalDate.now().getYear() - Math.abs(age);
         }
+        this.name=name;
     }
 
     public String getName() {
@@ -39,7 +40,7 @@ public abstract class Animals {
     public abstract void eat();
 
     public void sleep(){
-
+        System.out.println("Сплю как ангелочек");
     }
     public abstract void go ();
 
@@ -48,7 +49,14 @@ public abstract class Animals {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Animals animals = (Animals) o;
-        return age == animals.age && Objects.equals(name, animals.name);
+        return age == animals.age && name.equals(animals.name);
     }
 
+    @Override
+    public String toString() {
+        return "Animals{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }

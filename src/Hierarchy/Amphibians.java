@@ -29,25 +29,32 @@ public class Amphibians extends Animals {
     }
 
     public void hunt(){
-
+        System.out.println("Охочусь на насекомых и мелких зверушек");
     }
 
     @Override
     public void eat() {
-
+        System.out.println("Ем всякую дичь");
     }
 
     @Override
     public void go() {
-
+        System.out.println("В основном не хожу");
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Amphibians that = (Amphibians) o;
-        return Objects.equals(livingEnvironment, that.livingEnvironment);
+        return livingEnvironment.equals(that.livingEnvironment);
     }
 
+    @Override
+    public String toString() {
+        return "Amphibians{" +
+                "livingEnvironment='" + livingEnvironment + '\'' +
+                '}';
+    }
 }
