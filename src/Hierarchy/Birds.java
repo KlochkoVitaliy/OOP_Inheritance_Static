@@ -3,106 +3,6 @@ package Hierarchy;
 import java.util.Objects;
 
 public class Birds extends Animals {
-    public static class Flightless extends Animals {
-        private String typeOfMovement;
-
-        public Flightless(String name, String typeOfMovement) {
-            this(name, 0, "Type of movement", "Eath");
-            if (typeOfMovement != null && !typeOfMovement.isEmpty() && !typeOfMovement.isBlank()) {
-                this.typeOfMovement = typeOfMovement;
-            } else {
-                this.typeOfMovement = "No Data";
-            }
-        }
-
-        public Flightless(String name, int age, String typeOfMovement, String livingEnvironment) {
-            super(name, age);
-            if (typeOfMovement != null && !typeOfMovement.isEmpty() && !typeOfMovement.isBlank()) {
-                this.typeOfMovement = typeOfMovement;
-            } else {
-                this.typeOfMovement = "No Data";
-            }
-            livingEnvironment = getLivingEnvironment();
-        }
-
-        public String getTypeOfMovement() {
-            return typeOfMovement;
-        }
-
-        public void walk() {
-
-        }
-
-        @Override
-        public void eat() {
-
-        }
-
-        @Override
-        public void go() {
-
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Flightless that = (Flightless) o;
-            return Objects.equals(typeOfMovement, that.typeOfMovement);
-        }
-
-    }
-
-    public static class Flying extends Animals {
-        private String typeOfMovement;
-
-        public Flying(String name, String typeOfMovement) {
-            this(name, 0, typeOfMovement, "Eath");
-            if (typeOfMovement != null && !typeOfMovement.isEmpty() && !typeOfMovement.isBlank()) {
-                this.typeOfMovement = typeOfMovement;
-            } else {
-                this.typeOfMovement = "No Data";
-            }
-        }
-
-        public Flying(String name, int age, String typeOfMovement, String livingEnvironment) {
-            super(name, age);
-            if (typeOfMovement != null && !typeOfMovement.isEmpty() && !typeOfMovement.isBlank()) {
-                this.typeOfMovement = typeOfMovement;
-            } else {
-                this.typeOfMovement = "No Data";
-            }
-            livingEnvironment = getLivingEnvironment();
-        }
-
-        public String getTypeOfMovement() {
-            return typeOfMovement;
-        }
-
-        public void fly() {
-
-        }
-
-        @Override
-        public void eat() {
-
-        }
-
-        @Override
-        public void go() {
-
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Flying flying = (Flying) o;
-            return Objects.equals(typeOfMovement, flying.typeOfMovement);
-        }
-
-    }
-
     private static String livingEnvironment;
     private Flightless flightless;
     private Flying flying;
@@ -130,27 +30,35 @@ public class Birds extends Animals {
     }
 
     public void hunt() {
-
+        System.out.println("Охочусь на насекомых и меских зверей");
     }
 
     @Override
     public void eat() {
-
+        System.out.println("Ем что в рот положат");
     }
 
     @Override
     public void go() {
-
+        System.out.println("Летаю как Орель");
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Birds birds = (Birds) o;
-        return Objects.equals(flightless, birds.flightless) && Objects.equals(flying, birds.flying);
+        return flightless.equals(birds.flightless) && flying.equals(birds.flying);
     }
 
+    @Override
+    public String toString() {
+        return "Birds{" +
+                "flightless=" + flightless +
+                ", flying=" + flying +
+                '}';
+    }
 }
 
 
