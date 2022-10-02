@@ -1,11 +1,13 @@
 package Hierarchy;
 
+import java.util.Objects;
+
 public  class Predators extends Mammals {
     private String typeFood;
 
     public Predators(String name, String livingEnvironment, int speed, String typeFood) {
         super(name, livingEnvironment, speed);
-        if (typeFood != null && !typeFood.isEmpty() && !typeFood.isBlank()) {
+        if (typeFood != null && !typeFood.isBlank()) {
             this.typeFood = typeFood;
         } else {
             this.typeFood = "No Data";
@@ -14,7 +16,7 @@ public  class Predators extends Mammals {
 
     public Predators(String name, int age, String livingEnvironment, int speed, String typeFood) {
         super(name, age, livingEnvironment, speed);
-        if (typeFood != null && !typeFood.isEmpty() && !typeFood.isBlank()) {
+        if (typeFood != null && !typeFood.isBlank()) {
             this.typeFood = typeFood;
         } else {
             this.typeFood = "No Data";
@@ -54,6 +56,11 @@ public  class Predators extends Mammals {
         if (!super.equals(o)) return false;
         Predators predators = (Predators) o;
         return typeFood.equals(predators.typeFood);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), typeFood);
     }
 
     @Override

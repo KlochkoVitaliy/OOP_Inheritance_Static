@@ -1,11 +1,13 @@
 package Hierarchy;
 
+import java.util.Objects;
+
 public class Flightless extends Birds {
     private String typeOfMovement;
 
     public Flightless(String name, String livingEnvironment, String typeOfMovement) {
         super(name, livingEnvironment);
-        if (typeOfMovement != null && !typeOfMovement.isEmpty() && !typeOfMovement.isBlank()) {
+        if (typeOfMovement != null  && !typeOfMovement.isBlank()) {
             this.typeOfMovement = typeOfMovement;
         } else {
             this.typeOfMovement = "No Data";
@@ -14,7 +16,7 @@ public class Flightless extends Birds {
 
     public Flightless(String name, int age, String livingEnvironment, String typeOfMovement) {
         super(name, age, livingEnvironment);
-        if (typeOfMovement != null && !typeOfMovement.isEmpty() && !typeOfMovement.isBlank()) {
+        if (typeOfMovement != null && !typeOfMovement.isBlank()) {
             this.typeOfMovement = typeOfMovement;
         } else {
             this.typeOfMovement = "No Data";
@@ -46,6 +48,11 @@ public class Flightless extends Birds {
         if (!super.equals(o)) return false;
         Flightless that = (Flightless) o;
         return typeOfMovement.equals(that.typeOfMovement);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), typeOfMovement);
     }
 
     @Override

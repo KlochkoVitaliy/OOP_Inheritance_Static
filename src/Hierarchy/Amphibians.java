@@ -8,7 +8,7 @@ public class Amphibians extends Animals {
 
     public Amphibians(String name, String livingEnvironment) {
         super(name);
-        if (livingEnvironment != null && !livingEnvironment.isEmpty() && !livingEnvironment.isBlank()) {
+        if (livingEnvironment != null&& !livingEnvironment.isBlank()) {
             this.livingEnvironment = livingEnvironment;
         }else{
             this.livingEnvironment = "No Data";
@@ -17,7 +17,7 @@ public class Amphibians extends Animals {
 
     public Amphibians(String name, int age, String livingEnvironment) {
         super(name, age);
-        if (livingEnvironment != null && !livingEnvironment.isEmpty() && !livingEnvironment.isBlank()) {
+        if (livingEnvironment != null && !livingEnvironment.isBlank()) {
             this.livingEnvironment = livingEnvironment;
         }else{
             this.livingEnvironment = "No Data";
@@ -49,6 +49,11 @@ public class Amphibians extends Animals {
         if (!super.equals(o)) return false;
         Amphibians that = (Amphibians) o;
         return livingEnvironment.equals(that.livingEnvironment);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), livingEnvironment);
     }
 
     @Override

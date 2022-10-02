@@ -1,5 +1,7 @@
 package Hierarchy;
 
+import java.util.Objects;
+
 public class Mammals extends Animals {
 
     private  final  String livingEnvironment;
@@ -7,7 +9,7 @@ public class Mammals extends Animals {
 
     public Mammals(String name, String livingEnvironment, int speed) {
         super(name);
-        if (livingEnvironment != null && !livingEnvironment.isEmpty() && !livingEnvironment.isBlank()) {
+        if (livingEnvironment != null && !livingEnvironment.isBlank()) {
             this.livingEnvironment = livingEnvironment;
         } else {
             this.livingEnvironment = "No Data";
@@ -21,7 +23,7 @@ public class Mammals extends Animals {
 
     public Mammals(String name, int age, String livingEnvironment, int speed) {
         super(name, age);
-        if (livingEnvironment != null && !livingEnvironment.isEmpty() && !livingEnvironment.isBlank()) {
+        if (livingEnvironment != null && !livingEnvironment.isBlank()) {
             this.livingEnvironment = livingEnvironment;
         } else {
             this.livingEnvironment = "No Data";
@@ -55,5 +57,17 @@ public class Mammals extends Animals {
         System.out.println("Иду куда хочу");
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Mammals mammals = (Mammals) o;
+        return speed == mammals.speed && livingEnvironment.equals(mammals.livingEnvironment);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), livingEnvironment, speed);
+    }
 }
