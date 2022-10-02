@@ -7,7 +7,7 @@ public class Herbivores extends Mammals {
 
     public Herbivores(String name,int age,  String livingEnvironment, int speed, String typeFood) {
         super(name, age, livingEnvironment, speed);
-        if (typeFood != null && !typeFood.isEmpty() && !typeFood.isBlank()) {
+        if (typeFood != null && !typeFood.isBlank()) {
             this.typeFood = typeFood;
         } else {
             this.typeFood = "No Data";
@@ -16,7 +16,7 @@ public class Herbivores extends Mammals {
 
     public Herbivores(String name, String livingEnvironment, int speed, String typeFood) {
         super(name, livingEnvironment, speed);
-        if (typeFood != null && !typeFood.isEmpty() && !typeFood.isBlank()) {
+        if (typeFood != null  && !typeFood.isBlank()) {
             this.typeFood = typeFood;
         } else {
             this.typeFood = "No Data";
@@ -28,7 +28,7 @@ public class Herbivores extends Mammals {
     }
 
     public void setTypeFood(String typeFood) {
-        if (typeFood != null && !typeFood.isEmpty() && !typeFood.isBlank()) {
+        if (typeFood != null && !typeFood.isBlank()) {
             this.typeFood = typeFood;
         } else {
             this.typeFood = "Растительность";
@@ -57,6 +57,11 @@ public class Herbivores extends Mammals {
         if (!super.equals(o)) return false;
         Herbivores that = (Herbivores) o;
         return typeFood.equals(that.typeFood);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), typeFood);
     }
 
     @Override

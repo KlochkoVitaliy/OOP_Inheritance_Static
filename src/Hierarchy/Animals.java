@@ -14,9 +14,9 @@ public abstract class Animals {
 
     public Animals (String name, int age) {
         if (age >= 0) {
-            this.age = LocalDate.now().getYear() - age;
+            this.age = age;
         } else {
-            this.age = LocalDate.now().getYear() - Math.abs(age);
+            this.age = Math.abs(age);
         }
         this.name=name;
     }
@@ -26,7 +26,7 @@ public abstract class Animals {
     }
 
     public void setName(String name) {
-        if (name != null && !name.isEmpty() && !name.isBlank()) {
+        if (name != null && !name.isBlank()) {
             this.name = name;
         }else{
             this.name = "Животное";
@@ -34,7 +34,7 @@ public abstract class Animals {
     }
 
     public int getAge() {
-        return LocalDate.now().getYear() - age;
+        return  age;
     }
 
     public abstract void eat();
@@ -50,6 +50,11 @@ public abstract class Animals {
         if (o == null || getClass() != o.getClass()) return false;
         Animals animals = (Animals) o;
         return age == animals.age && name.equals(animals.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age);
     }
 
     @Override
